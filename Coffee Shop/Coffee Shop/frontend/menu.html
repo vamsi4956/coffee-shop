@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Bean Practi-Cool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5dc;
+            text-align: center;
+        }
+        .menu-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        .menu-card {
+            min-width: 300px;
+            margin: 10px;
+            padding: 20px;
+            background: #4E342E;
+            color: #FFD700;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .menu-card button {
+            background-color: #FFD700;
+            color: #4E342E;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .menu-card button:hover {
+            background-color: #e6c200;
+        }
+        .swipe-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #FFD700;
+            color: #4E342E;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        .left {
+            left: 10px;
+        }
+        .right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="ai-bot.html">Mr. Coffee</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+    <h1>Our Menu ☕</h1>
+    <button class="swipe-btn left" onclick="swipeMenu(-1)">⬅️</button>
+    <div class="menu-container" id="menuContainer">
+        <div class="menu-card"><img src="https://www.sharmispassions.com/wp-content/uploads/2012/07/espresso-coffee-recipe022.jpg" alt="Espresso"><h3>Espresso</h3><p>₹100</p><button onclick="addToCart('Espresso', 100)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://www.caffesociety.co.uk/assets/recipe-images/latte-small.jpg" alt="Latte"><h3>Latte</h3><p>₹120</p><button onclick="addToCart('Latte', 120)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://www.allrecipes.com/thmb/chsZz0jqIHWYz39ViZR-9k_BkkE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8624835-how-to-make-a-cappuccino-beauty-4x3-0301-13d55eaad60b42058f24369c292d4ccb.jpg" alt="Cappuccino"><h3>Cappuccino</h3><p>₹150</p><button onclick="addToCart('Cappuccino', 150)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://www.thespruceeats.com/thmb/mouqNJc2-paHkBuRRuPU7ht_L4o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/SES-mocha-4797918-hero-01-1-f8fb7ebd74914895b61366f6fc1d4b05.jpg" alt="Mocha"><h3>Mocha</h3><p>₹170</p><button onclick="addToCart('Mocha', 170)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://mocktail.net/wp-content/uploads/2022/03/homemade-Iced-Americano-recipe_1ig.jpg" alt="Americano"><h3>Americano</h3><p>₹130</p><button onclick="addToCart('Americano', 130)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://tse1.mm.bing.net/th?id=OIP.ueTivOeGgF3bLL1FjZLOnAHaJP&pid=Api&P=0&h=180" alt="Macchiato"><h3>Macchiato</h3><p>₹160</p><button onclick="addToCart('Macchiato', 160)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/flat-white-d8ada0f.jpg?quality=90&webp=true&resize=375,341" alt="Flat White"><h3>Flat White</h3><p>₹140</p><button onclick="addToCart('Flat White', 140)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://hostessatheart.com/wp-content/uploads/2024/02/Irish-Coffee-Recipe.jpg" alt="Irish Coffee"><h3>Irish Coffee</h3><p>₹200</p><button onclick="addToCart('Irish Coffee', 200)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://sakiproducts.com/cdn/shop/articles/What-is-Turkish-Coffee-Thumbnail_1920x1080.jpg?v=1733322022" alt="Turkish Coffee"><h3>Turkish Coffee</h3><p>₹180</p><button onclick="addToCart('Turkish Coffee', 180)">Add to Cart</button></div>
+        <div class="menu-card"><img src="https://www.thespruceeats.com/thmb/68fCSNbj5S4MFZPNFimHJbQY9co=/1500x1000/filters:fill(auto,1)/affogato-4776668-hero-08-40d7a68d12ba46f48eaea3c43aba715c.jpg" alt="Affogato"><h3>Affogato</h3><p>₹190</p><button onclick="addToCart('Affogato', 190)">Add to Cart</button></div>
+    </div>
+    <button class="swipe-btn right" onclick="swipeMenu(1)">➡️</button>
+</section>
+<footer>
+    <p>&copy; 2025 Bean Practi-Cool. All rights reserved.</p>
+</footer>
+<script>
+    let scrollAmount = 0;
+    function swipeMenu(direction) {
+        const container = document.getElementById('menuContainer');
+        const scrollStep = 320;
+        scrollAmount += direction * scrollStep;
+        container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(name + " added to cart!");
+    }
+</script>
+</body>
+</html>

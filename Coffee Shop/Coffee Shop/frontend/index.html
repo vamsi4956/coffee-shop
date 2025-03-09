@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bean Practi-Cool </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://smalltownwashington.com/wp-content/uploads/2020/12/shutterstock_1415138246-scaled.jpg') center/cover fixed;
+            text-align: center;
+            color: #4E342E;
+            animation: backgroundPulse 10s infinite alternate;
+        }
+        @keyframes backgroundPulse {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.1); }
+        }
+        .navbar {
+            background: rgba(78, 52, 46, 0.8);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            animation: slideDown 1s ease-out;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #FFD700;
+            font-weight: 600;
+            transition: color 0.3s ease-in-out, transform 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #FFF;
+            transform: scale(1.1);
+        }
+        .welcome-banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            animation: fadeIn 2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .banner-text {
+            color: #FFD700;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            animation: bounceIn 2s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: #4E342E;
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+        .cta-button:hover {
+            background: #FFD700;
+            color: #4E342E;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <img src="https://www.slazzer.com/downloads/ec83a2c3-f999-11ef-9086-65458f23d306/logo_prev_ui.png" alt="Bean Practi-Cool Logo" style="height: 60px; width: auto; cursor: pointer;">
+                    <input id="search-bar" type="text" placeholder="Search Here..." style="padding: 8px 15px; border: 2px solid #FFD700; border-radius: 20px; outline: none; background: rgba(255, 215, 0, 0.2); color: #4E342E; font-family: 'Poppins', sans-serif; box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease;">
+                </div>
+                <ul class="navbar">
+                    <li><a href="signup.html">Signup</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="ai-bot.html">Mr. Coffee🤖</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="games.html">Games</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+<section id="home" class="welcome-banner">
+    <div class="banner-text">
+        <h1>Bean Practi-Cool☕</h1>
+        <p>"A Hug in a Mug ..!"</p>
+        <a href="menu.html" class="cta-button">Explore Menu</a>
+    </div>
+</section>
+<script>
+window.onload = () => {
+    document.querySelector(".banner-text").classList.add("fade-in");
+};
+
+function searchCoffee() {
+    let searchValue = document.getElementById("search-bar").value.toLowerCase();
+    localStorage.setItem("searchCoffee", searchValue);
+    window.location.href = "menu.html?search=" + encodeURIComponent(searchValue);
+}
+
+document.getElementById("search-bar").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        searchCoffee();
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5F5DC; /* Light Beige */
+    color: #333333;
+    text-align: center;
+}
+
+nav {
+    background-color: #4E342E; /* Dark Brown */
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slide-down 0.8s ease-out;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: #FFD700; /* Golden Yellow */
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar li a:hover {
+    color: #F5F5DC;
+}
+
+.welcome-banner {
+    height: 100vh;
+    background: url('coffee-banner.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFD700;
+}
+
+.banner-text {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.banner-text.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta-button {
+    background: #4E342E;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #333333;
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

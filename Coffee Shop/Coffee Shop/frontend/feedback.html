@@ -1,0 +1,125 @@
+/* feedback.html */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Brew Bliss</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f5dc, #ffcc80);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            color: #4E342E;
+            text-shadow: 2px 2px 5px #FFD700;
+            margin-bottom: 20px;
+        }
+        .feedback-container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 30px;
+            background: #4E342E;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            color: #FFD700;
+            text-align: left;
+            animation: slideIn 1.2s ease-in-out;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        button {
+            padding: 10px 20px;
+            background: #FFD700;
+            color: #4E342E;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #FFA500;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="ai-bot.html">Mr. Coffee</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="games.html">Games</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+    <h1>Feedback Form ☕</h1>
+    <div class="feedback-container">
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" placeholder="Share your experience with us..." rows="5" required></textarea>
+
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+        <p id="feedback-response"></p>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2025 Brew Bliss. All rights reserved.</p>
+</footer>
+<script>
+    function submitFeedback() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let feedback = document.getElementById("feedback").value;
+        let response = document.getElementById("feedback-response");
+
+        if (name && email && feedback) {
+            response.innerHTML = `Thank you, ${name}! Your feedback has been received. ☕`;
+            response.style.color = "#FFD700";
+        } else {
+            response.innerHTML = "Please fill out all fields before submitting.";
+            response.style.color = "#FF0000";
+        }
+    }
+</script>
+</body>
+</html>

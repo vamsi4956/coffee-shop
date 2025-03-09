@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bean Practi-Cool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, #FFE4C4, #4E342E);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #contact {
+            padding: 50px;
+            background: #FFD700;
+            color: #4E342E;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            max-width: 800px;
+            margin: 50px auto;
+            animation: fadeIn 1.5s ease-in-out;
+            text-align: left;
+        }
+        h1 {
+            text-align: center;
+            color: #4E342E;
+            font-size: 2.5em;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        input, textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        input:focus, textarea:focus {
+            background: #f4f4f4;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+        }
+        button {
+            padding: 12px;
+            background: #4E342E;
+            color: #FFD700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #FFD700;
+            color: #4E342E;
+            transform: scale(1.1);
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        function showPosition(position) {
+            let location = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+            document.getElementById("location").value = location;
+        }
+        window.onload = getLocation;
+    </script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="ai-bot.html">Mr. Coffee</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="games.html">Games</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="contact">
+    <h1>Contact Us ☎️</h1>
+    <form action="#" method="POST">
+        <label for="name">Name: BEAN PRACTI-COOL</label>
+       
+        
+        <label for="email">Email: beanpcool@gmail.com</label>
+       
+        
+        <label for="message">Message:Try our new AMERICANO</label>
+       
+        <label for="contact info">Contact info:+91 8974725764</label>
+        
+        
+        
+    </form>
+    <H1>Location</H1>
+    <iframe 
+        src="https://www.google.com/maps?q=Opposite%20to%20VRL%20Homes,%20Sarjapur,%20Bangalore&output=embed" 
+        allowfullscreen>
+    </iframe>
+</section>
+<footer>
+    <p>&copy; 2025 Brew Bliss. All rights reserved.</p>
+</footer>
+</body>
+</html>

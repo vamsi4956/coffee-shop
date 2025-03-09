@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Bean Practi-Cool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1545239351-ef35f43d514b');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #333;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .signup-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            display: none;
+        }
+        h1 {
+            color: #4E342E;
+            margin-bottom: 20px;
+        }
+        input[type="email"], input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            outline: none;
+        }
+        button {
+            background: #4E342E;
+            color: #FFD700;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #6A4F4B;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .signup-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FFD700;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #4E342E;
+            font-weight: bold;
+        }
+        .signup-link:hover {
+            background: #FFC107;
+        }
+    </style>
+</head>
+<body onload="showSignup()">
+<a href="signup.html" class="signup-link">Sign Up</a>
+<div class="signup-container" id="signupPopup">
+    <h1>Sign Up to Bean Practi-Cool ☕</h1>
+    <input type="email" id="signupEmail" placeholder="Email Address" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button onclick="signup()">Sign Up</button>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+<script>
+    function showSignup() {
+        document.getElementById('signupPopup').style.display = 'block';
+    }
+
+    async function signup() {
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+        if (!email || !password) {
+            alert("Please fill all fields!");
+            return;
+        }
+        try {
+            const res = await fetch('http://localhost:5000/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await res.json();
+            alert(data.message);
+            if (res.ok) {
+                window.location.href = 'login.html';
+            }
+        } catch (err) {
+            console.error('Signup Error:', err);
+            alert('Something went wrong!');
+        }
+    }
+</script>
+</body>
+</html>

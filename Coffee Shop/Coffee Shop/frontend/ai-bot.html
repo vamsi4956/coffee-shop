@@ -1,0 +1,124 @@
+/* ai-bot.html */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bot - Bean Practi-Cool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f5dc, #ffcc80);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            color: #4E342E;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #FFD700;
+        }
+        .chat-box {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #4E342E;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            color: #FFD700;
+            animation: slideIn 1.2s ease-in-out;
+        }
+        #chat-output {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            text-align: left;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            margin-right: 10px;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            padding: 10px 20px;
+            background: #FFD700;
+            color: #4E342E;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #FFA500;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="ai-bot.html">Mr. Coffee🤖</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="games.html">Games</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="ai-bot">
+    <h1>Mr. Coffee 🤖</h1>
+    <div class="chat-box">
+        <div id="chat-output"></div>
+        <input type="text" id="chat-input" placeholder="Ask Mr. Coffee for suggestions...">
+        <button onclick="chatBot()">Send</button>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2025 Bean Practi-Cool. All rights reserved.</p>
+</footer>
+<script>
+    function chatBot() {
+        let input = document.getElementById("chat-input").value.toLowerCase();
+        let output = document.getElementById("chat-output");
+        let response = "";
+
+        if (input.includes("strong")) {
+            response = "Mr. Coffee suggests Espresso or Black Coffee! ☕";
+        } else if (input.includes("sweet")) {
+            response = "Mr. Coffee recommends Mocha or Affogato! 🍫";
+        } else if (input.includes("milk")) {
+            response = "Mr. Coffee says Cappuccino or Latte would be perfect for you! 🥛";
+        } else {
+            response = "Mr. Coffee recommends trying our special Bean Practi-Cool Signature Coffee! ☕";
+        }
+
+        output.innerHTML += `<p>User: ${input}</p>`;
+        output.innerHTML += `<p>Mr. Coffee: ${response}</p>`;
+        document.getElementById("chat-input").value = "";
+        output.scrollTop = output.scrollHeight;
+    }
+</script>
+</body>
+</html>

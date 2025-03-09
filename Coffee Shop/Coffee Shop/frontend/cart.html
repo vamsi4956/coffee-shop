@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Bean Practi-Cool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5dc;
+            text-align: center;
+        }
+        .cart-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #4E342E;
+            color: #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: #333333;
+            border-radius: 8px;
+        }
+        .cart-total {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .checkout-btn {
+            background: #FFD700;
+            color: #4E342E;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .remove-btn {
+            background: #FFD700;
+            color: #4E342E;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .payment-options {
+            margin-top: 20px;
+            display: none;
+        }
+        .payment-options select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #4E342E;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="ai-bot.html">Mr. Coffee</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="games.html">Games</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+    <h1>Your Cart 🛒</h1>
+    <div class="cart-container" id="cartContainer">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+    <div class="cart-total">Total: ₹<span id="totalAmount">0</span></div>
+    <button class="checkout-btn" onclick="showPaymentOptions()">Checkout</button>
+    <div class="payment-options" id="paymentOptions">
+        <h2>Select Payment Method</h2>
+        <select id="paymentMethod">
+            <option value="upi">UPI</option>
+            <option value="credit">Credit Card</option>
+            <option value="debit">Debit Card</option>
+        </select>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Pay</button>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2025 Bean Practi-Cool. All rights reserved.</p>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartContainer = document.getElementById("cartContainer");
+        const totalAmount = document.getElementById("totalAmount");
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+            cartItem.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>
+                                  <button class="remove-btn" onclick="removeItem(${index})">Remove</button>`;
+            cartContainer.appendChild(cartItem);
+            total += parseInt(item.price);
+        });
+
+        totalAmount.textContent = total;
+    });
+
+    function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+    }
+
+    function showPaymentOptions() {
+        document.getElementById("paymentOptions").style.display = "block";
+    }
+
+    function checkout() {
+        const paymentMethod = document.getElementById("paymentMethod").value;
+        alert(`Thank you for your purchase via ${paymentMethod} payment method!`);
+        localStorage.removeItem("cart");
+        window.location.href = "index.html";
+    }
+</script>
+</body>
+</html>
